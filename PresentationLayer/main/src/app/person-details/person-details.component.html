@@ -6,6 +6,11 @@
     <app-person-detail-form></app-person-detail-form>
   </div>
   <div class="col-md-7">
+    <form class="form-inline float-right py-3" novalidate autocomplete="off" #form="ngForm" (submit)="onSearch(form)">
+      <input name="search" [(ngModel)]="term" (change)="SearchBoxChanged()"
+           class="form-control mr-sm-2" type="search" placeholder="Search by ID Number, surname or account number" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
     <table class="table">
       <thead class="thead-light">
         <tr>

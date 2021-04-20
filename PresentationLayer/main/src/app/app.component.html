@@ -1,3 +1,22 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Angular Project Skills Assessment</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav">
+
+        <a class="nav-item nav-link" href="#">About Me</a>
+        <a class="nav-item nav-link" href="#">Contact Us</a>
+        <a class="nav-item nav-link" routerLink="/personslist">Person List</a>
+      </div>
+    </div>
+  </div>
+</nav>
 <div class="container">
-  <app-person-details></app-person-details>
+  <router-outlet></router-outlet>
 </div>

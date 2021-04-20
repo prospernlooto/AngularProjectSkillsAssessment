@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { PersonDetailService } from '../shared/person-detail.service';
 
 @Component({
@@ -9,11 +10,17 @@ import { PersonDetailService } from '../shared/person-detail.service';
 })
 export class PersonDetailsComponent implements OnInit {
 
+  public term: string = '';
+
   constructor(public service: PersonDetailService) { }
 
   ngOnInit() {
 
     this.service.refreshList();
+  }
+
+  onSearch(form: NgForm) {
+    this.service.searchList(this.term);
   }
 
   populateForm(selectedRecord) {
@@ -23,6 +30,12 @@ export class PersonDetailsComponent implements OnInit {
   onDelete(PMId) {
     if (confirm('Are you sure to delete this record ?')) {
       this.service.deletePaymentDetail(PMId);
+    }
+  }
+
+  SearchBoxChanged() {
+    if (this.term.length == 0) {
+      this.service.refreshList();
     }
   }
 

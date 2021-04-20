@@ -33,4 +33,9 @@ export class PersonDetailService {
       .toPromise()
       .then(res => this.list = res as PersonDetail[]);
   }
+  searchList(term: string) {
+    this.http.get(this.baseURL + `Search/${term}`)
+      .toPromise()
+      .then(res => this.list = res as PersonDetail[]);
+  }
 }

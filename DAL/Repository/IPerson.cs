@@ -10,6 +10,7 @@ namespace DAL.Repository
     public interface IPerson
     {
         IList<Persons> GetPersons();
+        IList<Persons> SearchPersons(string term);
         Persons GetPersonsById(int? id);
         void InsertNew(Persons employee);
         void Update(Persons employee);

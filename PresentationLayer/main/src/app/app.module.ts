@@ -7,12 +7,18 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { PersonDetailFormComponent } from './person-details/person-detail-form/person-detail-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HeroesComponent } from './heroes/heroes.component';
+import { PaymentDetailAccountListComponent } from './person-details/payment-detail-account-list/payment-detail-account-list.component';
+import { PersonListComponent } from './person-list/person-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonDetailsComponent,
-    PersonDetailFormComponent
+    PersonDetailFormComponent,
+    HeroesComponent,
+    PaymentDetailAccountListComponent,
+    PersonListComponent
   ],
   imports: [
     BrowserModule,

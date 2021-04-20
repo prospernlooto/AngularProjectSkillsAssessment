@@ -40,6 +40,13 @@ namespace ApplicationLayer.Controllers
 
             try
             {
+                var person = service.GetPersons().FirstOrDefault(x=> x.id_number == model.id_number);
+
+                if (person != null)
+                {
+                    return BadRequest("ID number already exists.");
+                }
+
                service.InsertNew(model);
 
                 return Ok("Success");
@@ -104,6 +111,27 @@ namespace ApplicationLayer.Controllers
                 var viewModel = service.GetPersonsById(model.code);
 
                 return Ok(viewModel);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+
+        [HttpGet]
+
+        [Route("api/Persons/Search/{term}")]
+
+        public IHttpActionResult Search(string term)
+        {
+
+            try
+            {
+                var model = service.SearchPersons(term);
+
+                return Ok(model);
 
             }
             catch (Exception ex)

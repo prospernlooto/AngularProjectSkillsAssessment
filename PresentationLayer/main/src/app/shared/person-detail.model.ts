@@ -3,4 +3,5 @@ export class PersonDetail {
   name: string = '';
   surname: string = '';
   id_number: string = '';
+  search: string = '';
 }

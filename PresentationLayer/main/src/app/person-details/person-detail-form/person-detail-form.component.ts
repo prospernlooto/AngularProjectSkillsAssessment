@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PersonDetail } from '../../shared/person-detail.model';
 import { PersonDetailService } from '../../shared/person-detail.service';
 
@@ -11,9 +12,15 @@ import { PersonDetailService } from '../../shared/person-detail.service';
 })
 export class PersonDetailFormComponent implements OnInit {
 
-  constructor(public service: PersonDetailService) { }
+  constructor(public service: PersonDetailService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goto() {
+
+    alert("test");
+    this.router.navigate(['/heroes']);
   }
 
   resetForm(form: NgForm) {

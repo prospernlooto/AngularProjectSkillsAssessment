@@ -85,6 +85,32 @@ namespace DAL.Services
             }
         }
 
+        public IList<Persons> SearchPersons(string term)
+        {
+            List<Persons> personsList = new List<Persons>();
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("pr_SearchPerson", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@term", term);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var personModel = new Persons()
+                    {
+                        code = Convert.ToInt32(rdr["code"]),
+                        name = rdr["name"].ToString(),
+                        surname = rdr["surname"].ToString(),
+                        id_number = rdr["id_number"].ToString()
+                    };
+                    personsList.Add(personModel);
+                }
+                return (personsList);
+            }
+        }
+
+
         public void Update(Persons person)
         {
             using (SqlConnection con = new SqlConnection(CS))
