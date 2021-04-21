@@ -12,6 +12,7 @@ import { AccountsListComponent } from './pages/accounts-list/accounts-list.compo
 import { AccountsFormComponent } from './pages/accounts-form/accounts-form.component';
 import { TransactionsFormComponent } from './pages/transactions-form/transactions-form.component';
 import { TransactionsListComponent } from './pages/transactions-list/transactions-list.component';
+import { WelcomeViewComponent } from './pages/welcome-view/welcome-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TransactionsListComponent } from './pages/transactions-list/transaction
     AccountsListComponent,
     AccountsFormComponent,
     TransactionsFormComponent,
-    TransactionsListComponent
+    TransactionsListComponent,
+    WelcomeViewComponent
   ],
   imports: [
     BrowserModule,
