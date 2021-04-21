@@ -31,7 +31,8 @@ export class PersonDetailService {
   deletePaymentDetail(code: number) {
     return this.http.get(this.baseURL + `DeletePersons/${code}`)
       .toPromise()
-      .then(res => this.list = res as PersonDetail[]);
+      .then(res => this.list = res as PersonDetail[])
+      .catch(err => alert(err.error.Message));
   }
   searchList(term: string) {
     this.http.get(this.baseURL + `Search/${term}`)

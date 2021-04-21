@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroesComponent } from './heroes/heroes.component';
-import { PersonDetailFormComponent } from './person-details/person-detail-form/person-detail-form.component';
-import { PersonDetailsComponent } from './person-details/person-details.component';
+import { AccountsListComponent } from './pages/accounts-list/accounts-list.component';
+import { TransactionsListComponent } from './pages/transactions-list/transactions-list.component';
+import { PersonListComponent } from './person-list/person-list.component';
 
-const routes: Routes = [{ path: 'personslist', component: PersonDetailsComponent },
-  { path: 'heroes', component: HeroesComponent }
+
+const routes: Routes = [
+  { path: 'personslist', component: PersonListComponent },
+  { path: 'accounts-list', component: AccountsListComponent },
+  { path: 'transaction-list', component: TransactionsListComponent }
 ];
 
 @NgModule({

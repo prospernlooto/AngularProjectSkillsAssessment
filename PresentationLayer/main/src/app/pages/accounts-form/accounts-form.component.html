@@ -1,0 +1,36 @@
+<h5>Add a new account</h5>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <p class="text-danger">
+    {{errorMessage}}
+  </p>
+  <input type="hidden" name="code" [value]="service.formData.code" />
+  <input type="hidden" name="person_code" [value]="person_code" />
+  <div class="form-group">
+    <label>ACCOUNT NUMBER</label>
+    <input class="form-control form-control-lg" placeholder="ACCOUNT NUMBER" name="account_number"
+           #account_number="ngModel" [(ngModel)]="service.formData.account_number"
+           required [class.invalid]="account_number.invalid &#038;&#038; account_number.touched">
+  </div>
+  <div class="form-group">
+    <label>OUTSTANDING BALANCE</label>
+    <input class="form-control form-control-lg" placeholder="OUTSTANDING BALANCE" name="outstanding_balance"
+           #outstanding_balance="ngModel" [(ngModel)]="service.formData.outstanding_balance"
+           [disabled]="true">
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+    <div class="col-sm-6">
+      <button (click)="resetForm(form)" class="btn btn-danger btn-lg btn-block" type="button">CLEAR</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-info btn-lg btn-block" type="button" [disabled]="service.formData.code == 0" (click)="gotoTransactions(service.formData.code, form)">VIEW TRANSACTIONS</button>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-dark btn-lg btn-block" type="button" (click)="goBack()">GO BACK</button>
+  </div>
+</form>
+

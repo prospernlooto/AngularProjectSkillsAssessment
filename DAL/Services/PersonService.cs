@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL.Helpers;
+using DAL.Models;
 using DAL.Repository;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace DAL.Services
                 {
                     var personModel = new Persons()
                     {
-                        code = Convert.ToInt32(rdr["code"]),
+                        code = DataTypesConvertor.ConvertToInt(rdr["code"]),
                         name = rdr["name"].ToString(),
                         surname = rdr["surname"].ToString(),
                         id_number = rdr["id_number"].ToString()
@@ -62,7 +63,7 @@ namespace DAL.Services
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    personModel.code = Convert.ToInt32(rdr["code"]);
+                    personModel.code = DataTypesConvertor.ConvertToInt(rdr["code"]);
                     personModel.name = rdr["name"].ToString();
                     personModel.surname = rdr["surname"].ToString();
                     personModel.id_number = rdr["id_number"].ToString();
@@ -99,7 +100,7 @@ namespace DAL.Services
                 {
                     var personModel = new Persons()
                     {
-                        code = Convert.ToInt32(rdr["code"]),
+                        code = DataTypesConvertor.ConvertToInt(rdr["code"]),
                         name = rdr["name"].ToString(),
                         surname = rdr["surname"].ToString(),
                         id_number = rdr["id_number"].ToString()
@@ -125,5 +126,6 @@ namespace DAL.Services
                 cmd.ExecuteNonQuery();
             }
         }
+
     }
 }

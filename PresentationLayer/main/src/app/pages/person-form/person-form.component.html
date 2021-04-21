@@ -1,5 +1,8 @@
 <h5>Add a new person</h5>
 <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <p class="text-danger">
+    {{errorMessage}}
+  </p>
   <input type="hidden" name="code" [value]="service.formData.code" />
   <div class="form-group">
     <label>NAME</label>
@@ -20,8 +23,16 @@
            required [class.invalid]="id_number.invalid &#038;&#038; id_number.touched">
   </div>
 
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+    <div class="col-sm-6">
+      <button (click)="resetForm(form)" class="btn btn-danger btn-lg btn-block" type="button">CLEAR</button>
+    </div>
+  </div>
   <div class="form-group">
-    <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    <button (click)="gotoAccounts(service.formData.code, form)" class="btn btn-info btn-lg btn-block" type="button" [disabled]="service.formData.code == 0">VIEW ACCOUNTS</button>
   </div>
 </form>
 

@@ -12,6 +12,7 @@ namespace ApplicationLayer.Controllers
     public class PersonsController : ApiController
     {
         private readonly PersonService service = new PersonService();
+        private readonly AccountService accountService = new AccountService();
 
         [HttpGet]
         [Route("api/Persons/GetAllPersons")]
@@ -44,7 +45,7 @@ namespace ApplicationLayer.Controllers
 
                 if (person != null)
                 {
-                    return BadRequest("ID number already exists.");
+                    return BadRequest("A person can only be created once with the same ID Number.");
                 }
 
                service.InsertNew(model);
@@ -89,9 +90,16 @@ namespace ApplicationLayer.Controllers
             {
                 var model = service.GetPersonsById(code);
 
-                service.Delete(model);
+                var personAccountsList = accountService.GetAccountsByPersonCode(model.code);
 
-                return Ok("Success");
+                if (personAccountsList.Count > 0)
+                {
+                    return BadRequest("Only persons with no accounts or where all accounts are closed may be deleted.");
+                }
+
+                service.Delete(model);
+                var persons = service.GetPersons();
+                return Ok(persons);
 
             }
             catch (Exception ex)
@@ -100,15 +108,15 @@ namespace ApplicationLayer.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("api/Persons/GetPersonByCode")]
+        [HttpGet]
+        [Route("api/Persons/GetPersonByCode/{code}")]
 
-        public IHttpActionResult GetPersonByCode(Persons model)
+        public IHttpActionResult GetPersonByCode(int? code)
         {
 
             try
             {
-                var viewModel = service.GetPersonsById(model.code);
+                var viewModel = service.GetPersonsById(code);
 
                 return Ok(viewModel);
 

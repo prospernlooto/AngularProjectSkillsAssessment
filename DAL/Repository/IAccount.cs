@@ -10,9 +10,10 @@ namespace DAL.Repository
    public interface IAccount
     {
         IList<Accounts> GetAccountsByPersonCode(int? id);
+        IList<Accounts> GetAllAccounts();
         Accounts GetAccountByCode(int? id);
-        void InsertNew(Accounts employee);
-        void Update(Accounts employee);
-        void Delete(Accounts employee);
+        void InsertNew(Accounts account);
+        void Update(Accounts account);
+        void Delete(Accounts account);
     }
 }

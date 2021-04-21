@@ -3,22 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PersonDetailsComponent } from './person-details/person-details.component';
-import { PersonDetailFormComponent } from './person-details/person-detail-form/person-detail-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HeroesComponent } from './heroes/heroes.component';
-import { PaymentDetailAccountListComponent } from './person-details/payment-detail-account-list/payment-detail-account-list.component';
+import { PersonFormComponent } from './pages/person-form/person-form.component';
 import { PersonListComponent } from './person-list/person-list.component';
+import { AccountsListComponent } from './pages/accounts-list/accounts-list.component';
+import { AccountsFormComponent } from './pages/accounts-form/accounts-form.component';
+import { TransactionsFormComponent } from './pages/transactions-form/transactions-form.component';
+import { TransactionsListComponent } from './pages/transactions-list/transactions-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonDetailsComponent,
-    PersonDetailFormComponent,
     HeroesComponent,
-    PaymentDetailAccountListComponent,
-    PersonListComponent
+    PersonListComponent,
+    PersonFormComponent,
+    AccountsListComponent,
+    AccountsFormComponent,
+    TransactionsFormComponent,
+    TransactionsListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<h5>Add a new transaction</h5>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <p class="text-danger">
+    {{error_message}}
+  </p>
+  <input type="hidden" name="code" [value]="service.formData.code" />
+  <input type="hidden" name="person_code" [value]="account_code" />
+  <div class="form-group">
+    <label>TRANSACTION DATE</label>
+    <input type="date" class="form-control form-control-lg" placeholder="TRANSACTION DATE" name="transaction_date"
+           #transaction_date="ngModel" [(ngModel)]="service.formData.transaction_date"
+           required [class.invalid]="transaction_date.invalid &#038;&#038; transaction_date.touched">
+  </div>
+  <div class="form-group">
+    <label>AMOUNT</label>
+    <input class="form-control form-control-lg" placeholder="AMOUNT" type="number" name="amount"
+           #amount="ngModel" [(ngModel)]="service.formData.amount"
+           required [class.invalid]="amount.invalid &#038;&#038; amount.touched">
+  </div>
+  <div class="form-group">
+    <label>DESCRIPTION</label>
+    <select class="form-control form-control-lg" name="description"
+            #description="ngModel" [(ngModel)]="service.formData.description"
+            required [class.invalid]="description.invalid &#038;&#038; description.touched">
+      <option value="" selected>Select an option</option>
+      <option value="credit">Credit</option>
+      <option value="debit">Debit</option>
+    </select>
+
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+    <div class="col-sm-6">
+      <button (click)="resetForm(form)" class="btn btn-danger btn-lg btn-block" type="button">CLEAR</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-dark btn-lg btn-block" type="button" (click)="gotoAccounts()">GO BACK</button>
+  </div>
+</form>
+
