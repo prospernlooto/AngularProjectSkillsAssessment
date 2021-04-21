@@ -85,7 +85,6 @@ namespace DAL.Services
                 cmd.ExecuteNonQuery();
             }
         }
-
         public IList<Persons> SearchPersons(string term)
         {
             List<Persons> personsList = new List<Persons>();
@@ -110,8 +109,6 @@ namespace DAL.Services
                 return (personsList);
             }
         }
-
-
         public void Update(Persons person)
         {
             using (SqlConnection con = new SqlConnection(CS))

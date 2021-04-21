@@ -12,8 +12,8 @@ namespace DAL.Repository
         IList<Persons> GetPersons();
         IList<Persons> SearchPersons(string term);
         Persons GetPersonsById(int? id);
-        void InsertNew(Persons employee);
-        void Update(Persons employee);
-        void Delete(Persons employee);
+        void InsertNew(Persons person);
+        void Update(Persons person);
+        void Delete(Persons person);
     }
 }

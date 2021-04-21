@@ -79,33 +79,33 @@ namespace DAL.Services
             }
         }
 
-        public void InsertNew(Transactions account)
+        public void InsertNew(Transactions transaction)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 var cmd = new SqlCommand("pr_AddNewTransaction", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@account_code", account.account_code);
-                cmd.Parameters.AddWithValue("@transaction_date", account.transaction_date);
-                cmd.Parameters.AddWithValue("@amount", account.amount);
-                cmd.Parameters.AddWithValue("@description", account.description);
+                cmd.Parameters.AddWithValue("@account_code", transaction.account_code);
+                cmd.Parameters.AddWithValue("@transaction_date", transaction.transaction_date);
+                cmd.Parameters.AddWithValue("@amount", transaction.amount);
+                cmd.Parameters.AddWithValue("@description", transaction.description);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void Update(Transactions account)
+        public void Update(Transactions transaction)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 var cmd = new SqlCommand("pr_UpdateTransaction", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@code", account.code);
-                cmd.Parameters.AddWithValue("@account_code", account.account_code);
-                cmd.Parameters.AddWithValue("@transaction_date", account.transaction_date);
-                cmd.Parameters.AddWithValue("@amount", account.amount);
-                cmd.Parameters.AddWithValue("@description", account.description);
+                cmd.Parameters.AddWithValue("@code", transaction.code);
+                cmd.Parameters.AddWithValue("@account_code", transaction.account_code);
+                cmd.Parameters.AddWithValue("@transaction_date", transaction.transaction_date);
+                cmd.Parameters.AddWithValue("@amount", transaction.amount);
+                cmd.Parameters.AddWithValue("@description", transaction.description);
                 cmd.ExecuteNonQuery();
             }
         }

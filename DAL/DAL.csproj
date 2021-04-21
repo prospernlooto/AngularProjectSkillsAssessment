@@ -54,6 +54,8 @@
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\TransactionService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DBScripts\AngularProjectSkillsScript.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

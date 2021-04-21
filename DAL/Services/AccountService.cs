@@ -15,13 +15,13 @@ namespace DAL.Services
     public class AccountService : IAccount
     {
         private readonly string CS = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        public void Delete(Accounts person)
+        public void Delete(Accounts account)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 var cmd = new SqlCommand("pr_DeleteAccount", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@code", person.code);
+                cmd.Parameters.AddWithValue("@code", account.code);
                 con.Open();
               
                 cmd.ExecuteNonQuery();
@@ -74,28 +74,28 @@ namespace DAL.Services
             }
         }
 
-        public void InsertNew(Accounts employee)
+        public void InsertNew(Accounts account)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 var cmd = new SqlCommand("pr_AddNewAccount", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@person_code", employee.person_code);
-                cmd.Parameters.AddWithValue("@account_number", employee.account_number);
+                cmd.Parameters.AddWithValue("@person_code", account.person_code);
+                cmd.Parameters.AddWithValue("@account_number", account.account_number);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void Update(Accounts employee)
+        public void Update(Accounts account)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 var cmd = new SqlCommand("pr_UpdateAccount", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@code", employee.code);
-                cmd.Parameters.AddWithValue("@account_number", employee.account_number);
+                cmd.Parameters.AddWithValue("@code", account.code);
+                cmd.Parameters.AddWithValue("@account_number", account.account_number);
                 cmd.ExecuteNonQuery();
             }
         }

@@ -11,8 +11,8 @@ namespace DAL.Repository
     {
         IList<Transactions> GetTransactionsByAccountCode(int? id);
         Transactions GetTransactionByCode(int? id);
-        void InsertNew(Transactions account);
-        void Update(Transactions account);
+        void InsertNew(Transactions transaction);
+        void Update(Transactions transaction);
         void Delete(int? id);
     }
 }
