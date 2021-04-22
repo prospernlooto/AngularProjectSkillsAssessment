@@ -13,6 +13,8 @@ import { AccountsFormComponent } from './pages/accounts-form/accounts-form.compo
 import { TransactionsFormComponent } from './pages/transactions-form/transactions-form.component';
 import { TransactionsListComponent } from './pages/transactions-list/transactions-list.component';
 import { WelcomeViewComponent } from './pages/welcome-view/welcome-view.component';
+import { AboutMeViewComponent } from './pages/about-me-view/about-me-view.component';
+import { ContactMeViewComponent } from './pages/contact-me-view/contact-me-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { WelcomeViewComponent } from './pages/welcome-view/welcome-view.componen
     AccountsFormComponent,
     TransactionsFormComponent,
     TransactionsListComponent,
-    WelcomeViewComponent
+    WelcomeViewComponent,
+    AboutMeViewComponent,
+    ContactMeViewComponent
   ],
   imports: [
     BrowserModule,
